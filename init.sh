@@ -55,9 +55,12 @@ function anybar_monitor_disable() {
 }
 
 function _anybar_iterm_offset() {
-  local ITERM_SESSION_OFFSET=$((1 + ${ITERM_SESSION_ID:3:1}))
-
+  local ITERM_SESSION_OFFSET=0
+  if [ $ITERM_SESSION_ID ]; then
+      ITERM_SESSION_OFFSET=$((1 + ${ITERM_SESSION_ID:3:1}))
+  fi
   echo $ITERM_SESSION_OFFSET
+
 }
 
 # Given
